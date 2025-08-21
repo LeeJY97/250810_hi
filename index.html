@@ -3,89 +3,196 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>이재윤 - Java Spring 개발자 포트폴리오</title>
+    <title>이재윤 - 클라우드 엔지니어를 꿈꾸는 개발자</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+     <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      @font-face {
-        font-family: "SkyblessingInjeFontTTF";
-        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2507-1@1.0/SkyblessingInjeFontTTF.woff")
-          format("woff");
-        font-weight: normal;
-        font-style: normal;
+        
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --background-color: #f8f9fa;
+        --text-color: #343a40;
+        --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --card-hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       }
 
       body {
-        font-family: "SkyblessingInjeFontTTF";
-        /* font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-          Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-          "Noto Sans KR", "Malgun Gothic", sans-serif; */
+        font-family: "Noto Sans KR", sans-serif;
+        color: var(--text-color);
+        opacity: 0;
+        transition: opacity 1s ease-in;
       }
+
       .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop")
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=2102&auto=format&fit=crop")
             no-repeat center center;
         background-size: cover;
         color: white;
-        padding: 10rem 0;
+        padding: 12rem 0;
+        position: relative;
+        overflow: hidden;
       }
+
+      .hero-content {
+        animation: fadeInDown 1s ease-out;
+      }
+
+      .navbar {
+        transition: background-color 0.3s;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(44, 62, 80, 0.95) !important;
+      }
+
       .section-title {
-        font-weight: bold;
-        margin-bottom: 3rem;
+        font-weight: 700;
+        margin-bottom: 4rem;
+        position: relative;
+        display: inline-block;
       }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+      }
+
       .skill-icon {
         font-size: 4rem;
-        color: #0d6efd;
+        color: var(--primary-color);
+        transition: transform 0.3s, color 0.3s;
       }
+
+      .skill-item:hover .skill-icon {
+        transform: scale(1.2);
+        color: var(--secondary-color);
+      }
+
       .project-card {
-        transition: transform 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: var(--card-shadow);
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
       }
+
       .project-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-15px);
+        box-shadow: var(--card-hover-shadow);
+      }
+      
+      .profile-img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border: 5px solid var(--primary-color);
+        padding: 5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #2980b9;
+      }
+
+      .contact-icon a {
+        color: var(--secondary-color);
+        transition: color 0.3s, transform 0.3s;
+        font-size: 2.5rem;
+      }
+      
+      .contact-icon a:hover {
+        color: var(--primary-color);
+        transform: scale(1.1);
+      }
+
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <!-- OG Tag -->
-    <meta property="og:title" content="Java 스프링 개발자 포트폴리오" />
-    <meta property="og:description" content="열심히 하겠습니다 ㅎㅎ" />
-    <meta
-      property="og:image"
-      content="https://cdn.pixabay.com/photo/2024/08/30/10/14/cat-9009011_1280.jpg"
-    />
-  </head>
+    </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">이재윤 | Java Spring 개발자</a>
+        <a class="navbar-brand fw-bold" href="#">JAE YUN LEE</a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="#about">소개</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">기술 스택</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="#skills">기술</a></li>
             <li class="nav-item">
               <a class="nav-link" href="#projects">프로젝트</a>
             </li>
@@ -97,95 +204,94 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero text-center">
-      <div class="container">
-        <h1 class="display-4 fw-bold">
-          견고하고 확장 가능한 웹 애플리케이션을 만듭니다.
+      <div class="container hero-content">
+        <h1 class="display-3 fw-bold">
+          클라우드 인프라를 설계하고 구축합니다.
         </h1>
-        <p class="lead my-4">
-          안녕하세요, 끊임없이 배우고 성장하는 Java Spring 개발자 이재윤입니다.
+        <p class="lead my-4 fs-4">
+          안녕하세요, 클라우드 엔지니어를 꿈꾸는 이재윤입니다.<br />
+          안정적이고 확장성 있는 시스템에 기여하고 싶습니다.
         </p>
-        <a href="#projects" class="btn btn-primary btn-lg">프로젝트 보기</a>
+        <a href="#projects" class="btn btn-primary btn-lg rounded-pill px-4"
+          >프로젝트 보기</a
+        >
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container my-5">
-      <!-- About Me -->
-      <section id="about" class="py-5">
+      <section id="about" class="py-5 fade-in-section">
         <div class="row d-flex align-items-center">
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center mb-4 mb-md-0">
             <img
               src="https://via.placeholder.com/250"
-              class="img-fluid rounded-circle"
+              class="img-fluid rounded-circle profile-img"
               alt="프로필 사진"
             />
           </div>
           <div class="col-md-8">
             <h2 class="section-title">소개</h2>
-            <p class="lead">
-              3년차 Java Spring 개발자로서, 안정적이고 효율적인 백엔드 시스템
-              개발에 열정을 가지고 있습니다. 클린 코드와 테스트 주도 개발(TDD)을
-              통해 유지보수하기 좋은 코드를 작성하는 것을 중요하게 생각합니다.
+            <p class="lead mb-4">
+              사용자에게 안정적인 서비스를 제공하는 클라우드 인프라 구축에 큰
+              관심을 가지고 있습니다. 리눅스 환경에 익숙하며, 인프라 자동화와
+              효율적인 시스템 운영에 대해 꾸준히 학습하고 있습니다.
             </p>
             <p>
-              새로운 기술을 배우고 적용하는 것에 즐거움을 느끼며, 동료들과의
-              협업을 통해 더 나은 결과물을 만들어내는 과정에서 큰 보람을
-              느낍니다. 현재는 MSA(Microservice Architecture)와 클라우드
-              네이티브 기술에 깊은 관심을 가지고 학습하고 있습니다.
+              Java는 아직 익숙하지 않지만, 새로운 기술을 배우는 것에 대한
+              두려움이 없습니다. 동료들과의 적극적인 소통과 협업을 통해 함께
+              성장하며, 견고한 서비스를 만들어나가는 과정에서 보람을 느낍니다.
+              클라우드 네이티브 기술을 깊이 있게 이해하고 적용하는 엔지니어가
+              되는 것이 저의 목표입니다.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Skills -->
-      <section id="skills" class="py-5 bg-light">
+      <section id="skills" class="py-5 bg-light rounded-3 fade-in-section">
         <div class="text-center">
           <h2 class="section-title">기술 스택</h2>
         </div>
-        <div class="row text-center">
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-filetype-java skill-icon"></i>
-            <h5 class="mt-3">Java</h5>
+        <div class="row text-center mt-5">
+          <div class="col-md-3 col-6 mb-5 skill-item">
+            <i class="bi bi-ubuntu skill-icon"></i>
+            <h5 class="mt-3">Linux</h5>
           </div>
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-leaf skill-icon"></i>
-            <h5 class="mt-3">Spring Boot</h5>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-database skill-icon"></i>
-            <h5 class="mt-3">JPA & Hibernate</h5>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-server skill-icon"></i>
-            <h5 class="mt-3">MySQL & PostgreSQL</h5>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-git skill-icon"></i>
-            <h5 class="mt-3">Git & GitHub</h5>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
+          <div class="col-md-3 col-6 mb-5 skill-item">
             <i class="bi bi-cloud-fill skill-icon"></i>
             <h5 class="mt-3">AWS</h5>
           </div>
-          <div class="col-md-3 col-6 mb-4">
+          <div class="col-md-3 col-6 mb-5 skill-item">
             <i class="bi bi-docker skill-icon"></i>
             <h5 class="mt-3">Docker</h5>
           </div>
-          <div class="col-md-3 col-6 mb-4">
-            <i class="bi bi-braces skill-icon"></i>
-            <h5 class="mt-3">RESTful API</h5>
+          <div class="col-md-3 col-6 mb-5 skill-item">
+            <i class="bi bi-git skill-icon"></i>
+            <h5 class="mt-3">Git & GitHub</h5>
+          </div>
+          <div class="col-md-3 col-6 mb-5 skill-item">
+            <i class="bi bi-braces-asterisk skill-icon"></i>
+            <h5 class="mt-3">Kubernetes</h5>
+          </div>
+          <div class="col-md-3 col-6 mb-5 skill-item">
+            <i class="bi bi-terminal-fill skill-icon"></i>
+            <h5 class="mt-3">Shell Script</h5>
+          </div>
+          <div class="col-md-3 col-6 mb-5 skill-item">
+             <i class="bi bi-diagram-3-fill skill-icon"></i>
+            <h5 class="mt-3">Terraform</h5>
+          </div>
+          <div class="col-md-3 col-6 mb-5 skill-item">
+            <i class="bi bi-hdd-network-fill skill-icon"></i>
+            <h5 class="mt-3">Networking</h5>
           </div>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="py-5">
+      <section id="projects" class="py-5 fade-in-section">
         <div class="text-center">
           <h2 class="section-title">프로젝트</h2>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row">
           <div class="col-md-4 mb-4">
             <div class="card h-100 project-card">
               <img
@@ -194,16 +300,16 @@
                 alt="프로젝트 1"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">온라인 쇼핑몰 백엔드</h5>
+                <h5 class="card-title fw-bold">AWS 기반 웹 서비스 배포</h5>
                 <p class="card-text">
-                  Spring Boot, JPA, MySQL을 사용하여 구현한 온라인 쇼핑몰의
-                  백엔드 시스템입니다. 회원, 상품, 주문, 결제 API를
-                  개발했습니다.
+                  EC2, S3, RDS를 활용하여 웹 애플리케이션을 AWS에 배포하고
+                  운영한 경험이 있습니다. CI/CD 파이프라인을 구축하여 배포
+                  자동화를 구현했습니다.
                 </p>
-                <div class="mt-auto">
-                  <span class="badge bg-primary">Java</span>
-                  <span class="badge bg-success">Spring Boot</span>
-                  <span class="badge bg-info text-dark">JPA</span>
+                <div class="mt-auto pt-3">
+                  <span class="badge bg-primary">AWS</span>
+                  <span class="badge bg-success">Docker</span>
+                  <span class="badge bg-info text-dark">Jenkins</span>
                 </div>
               </div>
             </div>
@@ -216,17 +322,18 @@
                 alt="프로젝트 2"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">블로그 플랫폼 API 서버</h5>
+                <h5 class="card-title fw-bold">
+                  Kubernetes 클러스터 구축 및 운영
+                </h5>
                 <p class="card-text">
-                  Spring Security를 이용한 인증/인가 기능과 JWT 토큰 기반의 API
-                  서버를 구축했습니다. Docker를 사용하여 배포 환경을
-                  구성했습니다.
+                  On-premise 환경에서 Kubernetes 클러스터를 직접 구축하고,
+                  컨테이너화된 애플리케이션을 배포 및 관리했습니다. 모니터링
+                  시스템을 연동하여 안정성을 높였습니다.
                 </p>
-                <div class="mt-auto">
-                  <span class="badge bg-primary">Java</span>
-                  <span class="badge bg-success">Spring Security</span>
-                  <span class="badge bg-warning text-dark">JWT</span>
+                <div class="mt-auto pt-3">
+                  <span class="badge bg-primary">Kubernetes</span>
                   <span class="badge bg-secondary">Docker</span>
+                  <span class="badge bg-warning text-dark">Prometheus</span>
                 </div>
               </div>
             </div>
@@ -239,16 +346,18 @@
                 alt="프로젝트 3"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">실시간 예약 시스템</h5>
+                <h5 class="card-title fw-bold">
+                  Terraform을 이용한 인프라 코드화(IaC)
+                </h5>
                 <p class="card-text">
-                  Redis를 활용하여 동시성 문제를 제어하고, 실시간 좌석 예약이
-                  가능한 시스템의 백엔드를 개발했습니다. WebSocket을 이용한 알림
-                  기능을 구현했습니다.
+                  Terraform을 사용하여 AWS 인프라를 코드로 관리하고, 반복적인
+                  인프라 생성 작업을 자동화했습니다. Git을 통해 인프라 코드의
+                  형상 관리를 수행했습니다.
                 </p>
-                <div class="mt-auto">
-                  <span class="badge bg-primary">Java</span>
-                  <span class="badge bg-danger">Redis</span>
-                  <span class="badge bg-info text-dark">WebSocket</span>
+                <div class="mt-auto pt-3">
+                  <span class="badge bg-info text-dark">Terraform</span>
+                  <span class="badge bg-primary">AWS</span>
+                  <span class="badge bg-danger">Git</span>
                 </div>
               </div>
             </div>
@@ -256,33 +365,33 @@
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="py-5 bg-light">
+      <section id="contact" class="py-5 bg-light rounded-3 fade-in-section">
         <div class="text-center">
           <h2 class="section-title">연락처</h2>
-          <p class="lead">아래 연락처로 편하게 연락주세요.</p>
-          <div class="d-flex justify-content-center fs-2">
-            <a href="mailto:dev.minjun.kim@email.com" class="text-dark mx-3"
-              ><i class="bi bi-envelope-fill"></i
-            ></a>
+          <p class="lead">함께 성장할 기회를 기다립니다.</p>
+          <div class="d-flex justify-content-center mt-4 contact-icon">
+            <a href="mailto:your-email@example.com" class="text-dark mx-3">
+              <i class="bi bi-envelope-fill"></i>
+            </a>
             <a
               href="https://github.com/your-github"
               target="_blank"
               class="text-dark mx-3"
-              ><i class="bi bi-github"></i
-            ></a>
+            >
+              <i class="bi bi-github"></i>
+            </a>
             <a
               href="https://your-blog.com"
               target="_blank"
               class="text-dark mx-3"
-              ><i class="bi bi-rss-fill"></i
-            ></a>
+            >
+              <i class="bi bi-rss-fill"></i>
+            </a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
       <div class="container">
         <p class="mb-0">&copy; 2025 이재윤. All Rights Reserved.</p>
@@ -294,5 +403,37 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Body fade in
+      window.onload = () => {
+        document.body.style.opacity = "1";
+      };
+
+      // Navbar scroll effect
+      const nav = document.querySelector(".navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+
+      // Section fade in on scroll
+      const sections = document.querySelectorAll(".fade-in-section");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
   </body>
 </html>
